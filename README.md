@@ -1,108 +1,83 @@
-# ecc3479-project
-This project investigates the effect of obtaining a bachelor’s degree on annual income for males in Australia between 2005 and 2025 compared to males without a bachelor’s degree.
+ECC3479 Research Project — Data Pipeline & Documentation
+Project Overview
+This repository contains the full, reproducible workflow for my ECC3479 research project. The goal is to analyse the relationship between education level and personal income for Australian males, using publicly available ABS Census data (2016).
 
-Data sources -> ABS, Hilda survey, Census
+The project is structured around a clear, modular pipeline:
 
-Group Members -> George Lewis
+Raw data inspection
 
-We commit to maintaining full research transparency by documenting every major decision, using clear and consistent commit messages, and recording any use of AI tools along with how outputs were verified.
+Data cleaning and reshaping
 
-## 📁 Repository Structure
-project/
+Analysis (upcoming)
+
+Documentation and reproducibility
+
+Repository Structure
+Code
+ecc3479-project/
 │
 ├── data/
-│   ├── raw/        # Raw HILDA files (not uploaded to GitHub)
-│   └── clean/      # Cleaned, analysis-ready dataset + codebook
+│   ├── raw/
+│   │   └── 2021 census data.xlsx
+│   └── clean/
+│       └── 2016_census_clean.csv
 │
-├── code/
+├── src/
 │   ├── 01_load_data.py
-│   ├── 02_clean_data.py
-│   └── 03_analysis.py
-│
-├── output/         # Figures, tables, regression results
+│   └── 02_clean_data.py
 │
 └── README.md
+1. Raw Data Inspection — 01_load_data.py
+This script loads the ABS Excel file exactly as it appears, without assuming any structure.
+It prints the first 40–60 rows so I can visually inspect:
 
----
+where metadata ends
 
-## 🚀 How to Run This Project From Scratch
+where the income table begins
 
-### **1. Obtain the raw data**
-Due to licensing restrictions, HILDA microdata cannot be uploaded to GitHub.  
-To reproduce this project:
+which column contains income brackets
 
-1. Apply for HILDA access through the Australian Data Archive (ADA).  
-2. Download the STATA `.dta` files.  
-3. Place them inside:
+which columns contain education-level counts
 
-data/raw/
+where the table ends
 
-### **2. Install required software**
-This project uses:
+This step is essential because ABS TableBuilder exports often contain:
 
-- Python 3.x  
-- pandas  
-- numpy  
-- statsmodels  
-- matplotlib / seaborn  
+merged cells
 
-You can install everything with:
+blank rows
 
-pip install -r requirements.txt
+metadata blocks
 
+inconsistent spacing
 
-(You can create this file later.)
+no true header row
 
----
+Running this script ensures the cleaning pipeline is based on an accurate understanding of the raw file.
 
-## 🧪 Script Execution Order
+2. Data Cleaning — 02_clean_data.py
+This script performs the full cleaning pipeline.
 
-Run the scripts in the following order:
+Loads the raw Excel with no header
+ABS files do not contain a usable header row, so the file is read without one.
 
-1. `01_load_data.py`  
-   - Loads raw HILDA files  
-   - Selects relevant variables  
-   - Saves intermediate dataset  
+Automatically detects the income table
+The script identifies the row containing “Negative income” and the row containing “Total” using robust text matching.
 
-2. `02_clean_data.py`  
-   - Filters males aged 15–74  
-   - Creates bachelor indicator  
-   - Creates income variable  
-   - Saves cleaned dataset to `data/clean/`  
+Extracts the income × education matrix
+Only the rows and columns containing real data are kept.
 
-3. `03_analysis.py`  
-   - Computes descriptive statistics  
-   - Runs regression  
-   - Exports tables/figures to `output/`  
+Assigns correct education-level column names
+These are manually defined because the raw file does not include them in a structured header.
 
----
+Reshapes the dataset from wide to long
+Final tidy format:
 
-## 📘 Data Codebook
+Code
+income_bracket    education    count
+Saves the cleaned dataset
+The cleaned dataset is written to:
 
-A full codebook describing all variables in the cleaned dataset is located in:
-
-data/clean/codebook.md
-
-This includes:
-
-- Variable names  
-- Definitions  
-- Units  
-- Transformations  
-- Source files  
-
----
-
-## 🔍 Research Transparency
-
-This repository follows best practices for reproducible research:
-
-- Frequent, meaningful commit messages  
-- Clear documentation of all decisions  
-- No raw data uploaded (due to licensing)  
-- All analysis steps fully scripted  
-- AI usage documented and verified  
-
-
-
-
+Code
+data/clean/2016_census_clean.csv
+This file is now ready for analysis.
