@@ -1,0 +1,193 @@
+income_bracket,education,count
+Negative Income,Postgraduate Degree Level,1503
+Nil Income,Postgraduate Degree Level,16045
+"$1-$149 ($1-$7,799)",Postgraduate Degree Level,5306
+"$150-$299 ($7,800-$15,599)",Postgraduate Degree Level,10087
+"$300-$399 ($15,600-$20,799)",Postgraduate Degree Level,11968
+"$400-$499 ($20,800-$25,999)",Postgraduate Degree Level,14072
+"$500-$649 ($26,000-$33,799)",Postgraduate Degree Level,19697
+"$650-$799 ($33,800-$41,599)",Postgraduate Degree Level,21139
+"$800-$999 ($41,600-$51,999)",Postgraduate Degree Level,28701
+"$1,000-$1,249 ($52,000-$64,999)",Postgraduate Degree Level,39310
+"$1,250-$1,499 ($65,000-$77,999)",Postgraduate Degree Level,35769
+"$1,500-$1,749 ($78,000-$90,999)",Postgraduate Degree Level,40677
+"$1,750-$1,999 ($91,000-$103,999)",Postgraduate Degree Level,37771
+"$2,000-$2,999 ($104,000-$155,999)",Postgraduate Degree Level,88598
+"$3,000 Or More ($156,000 Or More)",Postgraduate Degree Level,89150
+Not Stated,Postgraduate Degree Level,4210
+Negative Income,Graduate Diploma and Graduate Certificate Level,383
+Nil Income,Graduate Diploma and Graduate Certificate Level,2998
+"$1-$149 ($1-$7,799)",Graduate Diploma and Graduate Certificate Level,1580
+"$150-$299 ($7,800-$15,599)",Graduate Diploma and Graduate Certificate Level,3304
+"$300-$399 ($15,600-$20,799)",Graduate Diploma and Graduate Certificate Level,3920
+"$400-$499 ($20,800-$25,999)",Graduate Diploma and Graduate Certificate Level,4251
+"$500-$649 ($26,000-$33,799)",Graduate Diploma and Graduate Certificate Level,5482
+"$650-$799 ($33,800-$41,599)",Graduate Diploma and Graduate Certificate Level,5955
+"$800-$999 ($41,600-$51,999)",Graduate Diploma and Graduate Certificate Level,7983
+"$1,000-$1,249 ($52,000-$64,999)",Graduate Diploma and Graduate Certificate Level,11685
+"$1,250-$1,499 ($65,000-$77,999)",Graduate Diploma and Graduate Certificate Level,11983
+"$1,500-$1,749 ($78,000-$90,999)",Graduate Diploma and Graduate Certificate Level,14532
+"$1,750-$1,999 ($91,000-$103,999)",Graduate Diploma and Graduate Certificate Level,13853
+"$2,000-$2,999 ($104,000-$155,999)",Graduate Diploma and Graduate Certificate Level,26834
+"$3,000 Or More ($156,000 Or More)",Graduate Diploma and Graduate Certificate Level,18961
+Not Stated,Graduate Diploma and Graduate Certificate Level,1097
+Negative Income,Bachelor Degree Level,4056
+Nil Income,Bachelor Degree Level,53461
+"$1-$149 ($1-$7,799)",Bachelor Degree Level,19493
+"$150-$299 ($7,800-$15,599)",Bachelor Degree Level,41463
+"$300-$399 ($15,600-$20,799)",Bachelor Degree Level,45895
+"$400-$499 ($20,800-$25,999)",Bachelor Degree Level,46972
+"$500-$649 ($26,000-$33,799)",Bachelor Degree Level,56585
+"$650-$799 ($33,800-$41,599)",Bachelor Degree Level,65206
+"$800-$999 ($41,600-$51,999)",Bachelor Degree Level,93098
+"$1,000-$1,249 ($52,000-$64,999)",Bachelor Degree Level,125560
+"$1,250-$1,499 ($65,000-$77,999)",Bachelor Degree Level,110123
+"$1,500-$1,749 ($78,000-$90,999)",Bachelor Degree Level,118044
+"$1,750-$1,999 ($91,000-$103,999)",Bachelor Degree Level,100026
+"$2,000-$2,999 ($104,000-$155,999)",Bachelor Degree Level,192258
+"$3,000 Or More ($156,000 Or More)",Bachelor Degree Level,164427
+Not Stated,Bachelor Degree Level,14117
+Negative Income,Advanced Diploma and Diploma Level,2787
+Nil Income,Advanced Diploma and Diploma Level,26781
+"$1-$149 ($1-$7,799)",Advanced Diploma and Diploma Level,12221
+"$150-$299 ($7,800-$15,599)",Advanced Diploma and Diploma Level,31087
+"$300-$399 ($15,600-$20,799)",Advanced Diploma and Diploma Level,38474
+"$400-$499 ($20,800-$25,999)",Advanced Diploma and Diploma Level,37960
+"$500-$649 ($26,000-$33,799)",Advanced Diploma and Diploma Level,42732
+"$650-$799 ($33,800-$41,599)",Advanced Diploma and Diploma Level,50028
+"$800-$999 ($41,600-$51,999)",Advanced Diploma and Diploma Level,68767
+"$1,000-$1,249 ($52,000-$64,999)",Advanced Diploma and Diploma Level,83575
+"$1,250-$1,499 ($65,000-$77,999)",Advanced Diploma and Diploma Level,64910
+"$1,500-$1,749 ($78,000-$90,999)",Advanced Diploma and Diploma Level,63994
+"$1,750-$1,999 ($91,000-$103,999)",Advanced Diploma and Diploma Level,50257
+"$2,000-$2,999 ($104,000-$155,999)",Advanced Diploma and Diploma Level,84882
+"$3,000 Or More ($156,000 Or More)",Advanced Diploma and Diploma Level,43487
+Not Stated,Advanced Diploma and Diploma Level,9082
+Negative Income,Certificate III & IV Level,7662
+Nil Income,Certificate III & IV Level,62163
+"$1-$149 ($1-$7,799)",Certificate III & IV Level,33192
+"$150-$299 ($7,800-$15,599)",Certificate III & IV Level,103213
+"$300-$399 ($15,600-$20,799)",Certificate III & IV Level,151453
+"$400-$499 ($20,800-$25,999)",Certificate III & IV Level,128263
+"$500-$649 ($26,000-$33,799)",Certificate III & IV Level,129831
+"$650-$799 ($33,800-$41,599)",Certificate III & IV Level,166555
+"$800-$999 ($41,600-$51,999)",Certificate III & IV Level,240606
+"$1,000-$1,249 ($52,000-$64,999)",Certificate III & IV Level,288357
+"$1,250-$1,499 ($65,000-$77,999)",Certificate III & IV Level,202726
+"$1,500-$1,749 ($78,000-$90,999)",Certificate III & IV Level,163530
+"$1,750-$1,999 ($91,000-$103,999)",Certificate III & IV Level,106564
+"$2,000-$2,999 ($104,000-$155,999)",Certificate III & IV Level,147238
+"$3,000 Or More ($156,000 Or More)",Certificate III & IV Level,57016
+Not Stated,Certificate III & IV Level,45247
+Negative Income,Secondary Education - Years 10 and above,19576
+Nil Income,Secondary Education - Years 10 and above,364809
+"$1-$149 ($1-$7,799)",Secondary Education - Years 10 and above,177617
+"$150-$299 ($7,800-$15,599)",Secondary Education - Years 10 and above,243414
+"$300-$399 ($15,600-$20,799)",Secondary Education - Years 10 and above,234662
+"$400-$499 ($20,800-$25,999)",Secondary Education - Years 10 and above,219352
+"$500-$649 ($26,000-$33,799)",Secondary Education - Years 10 and above,207717
+"$650-$799 ($33,800-$41,599)",Secondary Education - Years 10 and above,233383
+"$800-$999 ($41,600-$51,999)",Secondary Education - Years 10 and above,267445
+"$1,000-$1,249 ($52,000-$64,999)",Secondary Education - Years 10 and above,246067
+"$1,250-$1,499 ($65,000-$77,999)",Secondary Education - Years 10 and above,149538
+"$1,500-$1,749 ($78,000-$90,999)",Secondary Education - Years 10 and above,111511
+"$1,750-$1,999 ($91,000-$103,999)",Secondary Education - Years 10 and above,71287
+"$2,000-$2,999 ($104,000-$155,999)",Secondary Education - Years 10 and above,99547
+"$3,000 Or More ($156,000 Or More)",Secondary Education - Years 10 and above,53291
+Not Stated,Secondary Education - Years 10 and above,68391
+Negative Income,Certificate I & II Level,34
+Nil Income,Certificate I & II Level,433
+"$1-$149 ($1-$7,799)",Certificate I & II Level,273
+"$150-$299 ($7,800-$15,599)",Certificate I & II Level,1003
+"$300-$399 ($15,600-$20,799)",Certificate I & II Level,718
+"$400-$499 ($20,800-$25,999)",Certificate I & II Level,645
+"$500-$649 ($26,000-$33,799)",Certificate I & II Level,563
+"$650-$799 ($33,800-$41,599)",Certificate I & II Level,611
+"$800-$999 ($41,600-$51,999)",Certificate I & II Level,668
+"$1,000-$1,249 ($52,000-$64,999)",Certificate I & II Level,441
+"$1,250-$1,499 ($65,000-$77,999)",Certificate I & II Level,270
+"$1,500-$1,749 ($78,000-$90,999)",Certificate I & II Level,134
+"$1,750-$1,999 ($91,000-$103,999)",Certificate I & II Level,107
+"$2,000-$2,999 ($104,000-$155,999)",Certificate I & II Level,102
+"$3,000 Or More ($156,000 Or More)",Certificate I & II Level,47
+Not Stated,Certificate I & II Level,122
+Negative Income,Secondary Education - Years 9 and below,5890
+Nil Income,Secondary Education - Years 9 and below,121001
+"$1-$149 ($1-$7,799)",Secondary Education - Years 9 and below,41278
+"$150-$299 ($7,800-$15,599)",Secondary Education - Years 9 and below,75552
+"$300-$399 ($15,600-$20,799)",Secondary Education - Years 9 and below,126952
+"$400-$499 ($20,800-$25,999)",Secondary Education - Years 9 and below,88442
+"$500-$649 ($26,000-$33,799)",Secondary Education - Years 9 and below,49191
+"$650-$799 ($33,800-$41,599)",Secondary Education - Years 9 and below,43724
+"$800-$999 ($41,600-$51,999)",Secondary Education - Years 9 and below,41179
+"$1,000-$1,249 ($52,000-$64,999)",Secondary Education - Years 9 and below,34007
+"$1,250-$1,499 ($65,000-$77,999)",Secondary Education - Years 9 and below,17295
+"$1,500-$1,749 ($78,000-$90,999)",Secondary Education - Years 9 and below,11165
+"$1,750-$1,999 ($91,000-$103,999)",Secondary Education - Years 9 and below,6684
+"$2,000-$2,999 ($104,000-$155,999)",Secondary Education - Years 9 and below,7545
+"$3,000 Or More ($156,000 Or More)",Secondary Education - Years 9 and below,5065
+Not Stated,Secondary Education - Years 9 and below,27395
+Negative Income,Supplementary Codes,2877
+Nil Income,Supplementary Codes,18195
+"$1-$149 ($1-$7,799)",Supplementary Codes,7301
+"$150-$299 ($7,800-$15,599)",Supplementary Codes,22816
+"$300-$399 ($15,600-$20,799)",Supplementary Codes,28805
+"$400-$499 ($20,800-$25,999)",Supplementary Codes,23828
+"$500-$649 ($26,000-$33,799)",Supplementary Codes,20477
+"$650-$799 ($33,800-$41,599)",Supplementary Codes,22162
+"$800-$999 ($41,600-$51,999)",Supplementary Codes,25524
+"$1,000-$1,249 ($52,000-$64,999)",Supplementary Codes,25507
+"$1,250-$1,499 ($65,000-$77,999)",Supplementary Codes,16581
+"$1,500-$1,749 ($78,000-$90,999)",Supplementary Codes,13732
+"$1,750-$1,999 ($91,000-$103,999)",Supplementary Codes,9631
+"$2,000-$2,999 ($104,000-$155,999)",Supplementary Codes,14932
+"$3,000 Or More ($156,000 Or More)",Supplementary Codes,9650
+Not Stated,Supplementary Codes,6958
+Negative Income,Not stated,3545
+Nil Income,Not stated,25622
+"$1-$149 ($1-$7,799)",Not stated,10527
+"$150-$299 ($7,800-$15,599)",Not stated,28232
+"$300-$399 ($15,600-$20,799)",Not stated,43354
+"$400-$499 ($20,800-$25,999)",Not stated,34724
+"$500-$649 ($26,000-$33,799)",Not stated,23619
+"$650-$799 ($33,800-$41,599)",Not stated,24549
+"$800-$999 ($41,600-$51,999)",Not stated,23919
+"$1,000-$1,249 ($52,000-$64,999)",Not stated,22108
+"$1,250-$1,499 ($65,000-$77,999)",Not stated,12060
+"$1,500-$1,749 ($78,000-$90,999)",Not stated,9162
+"$1,750-$1,999 ($91,000-$103,999)",Not stated,6239
+"$2,000-$2,999 ($104,000-$155,999)",Not stated,8382
+"$3,000 Or More ($156,000 Or More)",Not stated,7341
+Not Stated,Not stated,683103
+Negative Income,Not applicable,0
+Nil Income,Not applicable,0
+"$1-$149 ($1-$7,799)",Not applicable,0
+"$150-$299 ($7,800-$15,599)",Not applicable,0
+"$300-$399 ($15,600-$20,799)",Not applicable,0
+"$400-$499 ($20,800-$25,999)",Not applicable,0
+"$500-$649 ($26,000-$33,799)",Not applicable,0
+"$650-$799 ($33,800-$41,599)",Not applicable,0
+"$800-$999 ($41,600-$51,999)",Not applicable,0
+"$1,000-$1,249 ($52,000-$64,999)",Not applicable,0
+"$1,250-$1,499 ($65,000-$77,999)",Not applicable,0
+"$1,500-$1,749 ($78,000-$90,999)",Not applicable,0
+"$1,750-$1,999 ($91,000-$103,999)",Not applicable,0
+"$2,000-$2,999 ($104,000-$155,999)",Not applicable,0
+"$3,000 Or More ($156,000 Or More)",Not applicable,0
+Not Stated,Not applicable,0
+Negative Income,Total,48307
+Nil Income,Total,691508
+"$1-$149 ($1-$7,799)",Total,308775
+"$150-$299 ($7,800-$15,599)",Total,560165
+"$300-$399 ($15,600-$20,799)",Total,686216
+"$400-$499 ($20,800-$25,999)",Total,598523
+"$500-$649 ($26,000-$33,799)",Total,555893
+"$650-$799 ($33,800-$41,599)",Total,633309
+"$800-$999 ($41,600-$51,999)",Total,797881
+"$1,000-$1,249 ($52,000-$64,999)",Total,876605
+"$1,250-$1,499 ($65,000-$77,999)",Total,621260
+"$1,500-$1,749 ($78,000-$90,999)",Total,546477
+"$1,750-$1,999 ($91,000-$103,999)",Total,402420
+"$2,000-$2,999 ($104,000-$155,999)",Total,670312
+"$3,000 Or More ($156,000 Or More)",Total,448427
+Not Stated,Total,859719

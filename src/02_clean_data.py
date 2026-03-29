@@ -2,7 +2,7 @@ import pandas as pd
 
 # 1. Load raw file with no header
 df = pd.read_excel(
-    "data/raw/2021 census data.xlsx",
+    "data/raw/2016 census data.xlsx",
     header=None,
     dtype=str
 )
@@ -51,7 +51,7 @@ df_long = df.melt(
 df_long = df_long.dropna(subset=["count"])
 
 # 9. Save cleaned dataset
-df_long.to_csv("data/clean/2021_census_clean.csv", index=False)
+df_long.to_csv("data/clean/2016_census_clean.csv", index=False)
 
 print("Cleaning complete. Rows:", len(df_long))
 print(df_long.head())
