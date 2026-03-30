@@ -2,7 +2,6 @@ import pandas as pd
 import os
 
 # --- Ensure script runs from project root ---
-# This makes the script work even if it's inside "code/" or "src/"
 project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(project_root)
 
