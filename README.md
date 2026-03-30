@@ -146,5 +146,3 @@ Complete analysis script
 Produce visualisations
 
 Write interpretation and conclusions
-
-If you want, I can now help you write the analysis script, the midpoint conversion, or the visualisation code.
