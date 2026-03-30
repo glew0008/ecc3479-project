@@ -1,83 +1,150 @@
-ECC3479 Research Project — Data Pipeline & Documentation
-Project Overview
-This repository contains the full, reproducible workflow for my ECC3479 research project. The goal is to analyse the relationship between education level and personal income for Australian males, using publicly available ABS Census data (2016).
+Project Title
+Education and Income in Australia: A Comparative Analysis Using 2016 and 2021 Census Data
 
-The project is structured around a clear, modular pipeline:
+Overview
+This project investigates the relationship between educational attainment and personal income for Australian males using data from the 2016 and 2021 ABS Census.
+The analysis focuses on how income distributions differ across education levels and how these patterns have changed over time.
 
-Raw data inspection
+The project follows a fully reproducible workflow, including raw data extraction, cleaning, merging, and analysis.
 
-Data cleaning and reshaping
+Research Question
+How does educational attainment affect personal income for Australian males, and how did this relationship change between 2016 and 2021?
 
-Analysis (upcoming)
+Data Sources
+Data were extracted from the ABS Census TableBuilder platform.
 
-Documentation and reproducibility
+For both 2016 and 2021, the following variables were used:
+
+INCP – Total Personal Income (weekly)
+
+HEAP – Highest Educational Attainment (1‑digit)
+
+SEXP – Sex (Male)
+
+Geography – Australia (UR)
+
+Summation – Persons, Place of Usual Residence
+
+Only the datasets containing both income and education variables were used:
+
+2016 Census – Employment, Income and Education
+
+2021 Census – Employment, Income and Education
+
+2011 and 2006 were excluded because TableBuilder splits income and education across incompatible datasets in those years, preventing extraction of a consistent table.
 
 Repository Structure
 Code
 ecc3479-project/
 │
 ├── data/
-│   ├── raw/
-│   │   └── 2021 census data.xlsx
-│   └── clean/
-│       └── 2016_census_clean.csv
+│   ├── raw/                # Raw ABS exports (Excel/CSV)
+│   └── clean/              # Cleaned, tidy datasets
+│       ├── 2016_clean.csv
+│       ├── 2021_clean.csv
+│       └── merged_2016_2021.csv
 │
 ├── src/
-│   ├── 01_load_data.py
-│   └── 02_clean_data.py
+│   ├── 01_load_2016.py
+│   ├── 01_load_2021.py
+│   ├── 02_clean_2016.py
+│   ├── 02_clean_2021.py
+│   ├── 03_merge_2016_2021.py
+│   └── 04_analysis.py      # (to be developed)
 │
 └── README.md
-1. Raw Data Inspection — 01_load_data.py
-This script loads the ABS Excel file exactly as it appears, without assuming any structure.
-It prints the first 40–60 rows so I can visually inspect:
 
-where metadata ends
+Cleaning Process
+Each year is cleaned separately using dedicated scripts in src/.
 
-where the income table begins
+Cleaning Steps (applied to both years)
+Load the raw ABS export (CSV or Excel).
 
-which column contains income brackets
+Identify the start and end of the income table.
 
-which columns contain education-level counts
+Remove metadata rows and empty rows.
 
-where the table ends
+Standardise column names.
 
-This step is essential because ABS TableBuilder exports often contain:
+Reshape from wide to long format using pandas.melt().
 
-merged cells
-
-blank rows
-
-metadata blocks
-
-inconsistent spacing
-
-no true header row
-
-Running this script ensures the cleaning pipeline is based on an accurate understanding of the raw file.
-
-2. Data Cleaning — 02_clean_data.py
-This script performs the full cleaning pipeline.
-
-Loads the raw Excel with no header
-ABS files do not contain a usable header row, so the file is read without one.
-
-Automatically detects the income table
-The script identifies the row containing “Negative income” and the row containing “Total” using robust text matching.
-
-Extracts the income × education matrix
-Only the rows and columns containing real data are kept.
-
-Assigns correct education-level column names
-These are manually defined because the raw file does not include them in a structured header.
-
-Reshapes the dataset from wide to long
-Final tidy format:
+Output a tidy dataset with the following schema:
 
 Code
-income_bracket    education    count
-Saves the cleaned dataset
-The cleaned dataset is written to:
+year
+income_bracket
+education
+count
+Output Files
+data/clean/2016_clean.csv
+
+data/clean/2021_clean.csv
+
+Merging Process
+A dedicated script (03_merge_2016_2021.py) merges the cleaned datasets into a single long-format file:
 
 Code
-data/clean/2016_census_clean.csv
-This file is now ready for analysis.
+data/clean/merged_2016_2021.csv
+This file contains all combinations of:
+
+year
+
+income bracket
+
+education level
+
+count
+
+and is used for all downstream analysis.
+
+Analysis Plan
+The analysis (in 04_analysis.py) will include:
+
+Income midpoint conversion  
+Convert each income bracket into a numeric midpoint for quantitative analysis.
+
+Weighted mean income by education  
+Compute weighted averages for each education level in each year.
+
+Year‑to‑year comparison  
+Examine how income distributions shifted between 2016 and 2021.
+
+Visualisations
+
+Income distribution by education
+
+Change in weighted mean income
+
+Education‑income gradients over time
+
+Interpretation  
+Discuss how the relationship between education and income has evolved.
+
+Reproducibility Commitment
+This project follows best practices for reproducible research:
+
+Clear folder structure
+
+Separate scripts for loading, cleaning, merging, and analysis
+
+Meaningful commit messages
+
+Transparent documentation of all data transformations
+
+No manual editing of raw data
+
+Limitations
+2011 and 2006 Census data were excluded because income and education variables are not available in a single compatible dataset for those years.
+
+Income brackets differ slightly between 2016 and 2021 (e.g., top brackets split in 2021). These differences will be handled during midpoint conversion.
+
+Next Steps
+Finalise income midpoint conversion
+
+Complete analysis script
+
+Produce visualisations
+
+Write interpretation and conclusions
+
+If you want, I can now help you write the analysis script, the midpoint conversion, or the visualisation code.
