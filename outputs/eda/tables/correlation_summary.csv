@@ -1,0 +1,4 @@
+sample,weighted_pearson_rank_mean_income,spearman_rank_mean_income,weighted_pearson_rank_high_income_share
+2016,0.9946,0.9762,0.9594
+2021,0.9894,0.9762,0.9775
+Pooled,0.9799,0.9586,0.9534

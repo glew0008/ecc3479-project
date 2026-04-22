@@ -1,0 +1,11 @@
+metric,value
+rows,396
+columns,13
+year_values,2
+education_categories,12
+income_categories,18
+total_population_count,38934240
+null_year,0
+null_income_bracket,0
+null_education,0
+null_count,0

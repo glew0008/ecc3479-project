@@ -1,0 +1,7 @@
+step,value
+Rows in merged dataset,396
+Rows kept for analytic education sample,248
+Rows excluded due to non-analytic education labels,132
+Rows excluded due to unstated income,24
+Distinct original income brackets,18
+Distinct harmonised income brackets,16

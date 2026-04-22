@@ -1,0 +1,17 @@
+year,education,population_count,education_rank,weighted_mean_income,median_income_bracket,high_income_share_pct,low_income_share_pct
+2016,Postgraduate Degree Level,459793,8,1755.02,"$1,500-$1,749 ($78,000-$90,999)",38.66,7.16
+2016,Graduate Diploma and Graduate Certificate Level,133704,7,1695.06,"$1,500-$1,749 ($78,000-$90,999)",34.25,6.18
+2016,Bachelor Degree Level,1236667,6,1534.66,"$1,250-$1,499 ($65,000-$77,999)",28.84,9.58
+2016,Advanced Diploma and Diploma Level,701942,5,1276.04,"$1,000-$1,249 ($52,000-$64,999)",18.29,10.38
+2016,Certificate III & IV Level,1988369,4,1090.84,"$800-$999 ($41,600-$51,999)",10.27,10.37
+2016,Secondary Education - Years 10 and above,2699216,2,739.15,"$500-$649 ($26,000-$33,799)",5.66,29.84
+2016,Certificate I & II Level,6049,3,635.46,"$400-$499 ($20,800-$25,999)",2.46,28.81
+2016,Secondary Education - Years 9 and below,674970,1,487.01,"$300-$399 ($15,600-$20,799)",1.87,36.11
+2021,Postgraduate Degree Level,658828,8,1892.87,"$1,750-$1,999 ($91,000-$103,999)",44.31,5.15
+2021,Graduate Diploma and Graduate Certificate Level,167361,7,1843.93,"$1,750-$1,999 ($91,000-$103,999)",42.88,5.12
+2021,Bachelor Degree Level,1552228,6,1704.55,"$1,500-$1,749 ($78,000-$90,999)",36.05,6.78
+2021,Advanced Diploma and Diploma Level,817960,5,1406.94,"$1,000-$1,249 ($52,000-$64,999)",23.64,8.07
+2021,Certificate III & IV Level,2132611,4,1240.85,"$1,000-$1,249 ($52,000-$64,999)",15.42,8.35
+2021,Secondary Education - Years 10 and above,2869337,2,832.11,"$650-$799 ($33,800-$41,599)",7.48,24.76
+2021,Certificate I & II Level,6179,3,704.56,"$500-$649 ($26,000-$33,799)",3.37,22.06
+2021,Secondary Education - Years 9 and below,683386,1,506.76,"$300-$399 ($15,600-$20,799)",2.47,36.41
