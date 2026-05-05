@@ -235,9 +235,27 @@ Run the scripts from the project root.
 .venv\Scripts\python.exe src/04_eda.py
 ```
 
-### Notebook
+### EDA Notebook
 
 After generating the EDA outputs, open `outputs/eda/eda_submission.ipynb`, restart the kernel if needed, and run the notebook from top to bottom.
+
+### Analysis Notebook
+
+The econometric analysis is in `outputs/analysis/analysis.ipynb`. This notebook performs a weighted least squares regression of weekly income on education rank and year. It requires the merged dataset (`data/clean/merged_2016_2021.csv`) to be present.
+
+To run the analysis notebook:
+
+1. Ensure environment is set up and all dependencies installed (see Environment setup above)
+2. Open `outputs/analysis/analysis.ipynb` in Jupyter or VS Code
+3. Select the `.venv` kernel
+4. Run all cells from top to bottom
+
+The notebook will:
+- Load the merged dataset
+- Process and harmonise income brackets
+- Filter to the analytic sample
+- Estimate a WLS regression model
+- Output regression results and interpretation
 
 ## Reproducibility Notes
 
@@ -251,7 +269,7 @@ This project is organised to support a reproducible workflow:
 
 ## Submission Package
 
-To let another person replicate the notebook, submit the full project folder as a zip archive with:
+To let another person replicate the analysis, submit the full project folder as a zip archive with:
 
 - `README.md`
 - `requirements.txt`
@@ -259,6 +277,7 @@ To let another person replicate the notebook, submit the full project folder as 
 - `data/raw/`
 - `data/clean/`
 - `outputs/eda/`
+- `outputs/analysis/`
 
 Do not include `.venv/` or `.git/`.
 
@@ -274,7 +293,9 @@ python -m pip install -r requirements.txt
 .venv\Scripts\python.exe src/04_eda.py
 ```
 
-Then open `outputs/eda/eda_submission.ipynb` and run all cells from top to bottom.
+Then:
+- Open `outputs/eda/eda_submission.ipynb` and run all cells from top to bottom.
+- Or open `outputs/analysis/analysis.ipynb` for the econometric analysis and run all cells from top to bottom.
 
 ## Limitations
 
