@@ -61,6 +61,9 @@ ecc3479-project/
 │       ├── merged_2016_2021.csv
 │       └── codebook.md
 ├── outputs/
+│   ├── analysis/
+│   │   ├── analysis.ipynb
+│   │   └── robustness_analysis.ipynb
 │   └── eda/
 │       ├── eda_report.md
 │       ├── eda_submission.ipynb
@@ -72,7 +75,8 @@ ecc3479-project/
 │   ├── 02_clean_2016_data.py
 │   ├── 02_clean_2021_data.py
 │   ├── 03_merge_data_sets.py
-│   └── 04_eda.py
+│   ├── 04_eda.py
+│   └── robustness_analysis.py
 └── README.md
 ```
 
@@ -131,7 +135,19 @@ Main output locations:
 - `outputs/eda/figures/`
 - `outputs/eda/eda_report.md`
 
-### 5. Notebook submission
+### 5. Robustness analysis
+
+- `src/robustness_analysis.py`
+- `outputs/analysis/robustness_analysis.ipynb`
+
+This analysis:
+
+- loads the merged clean dataset
+- reproduces the main descriptive WLS specification
+- tests alternative control sets, sample definitions, functional form, and inference
+- produces a side-by-side robustness table with sample sizes and notes
+
+### 6. Notebook submission
 
 - `outputs/eda/eda_submission.ipynb`
 
@@ -235,27 +251,47 @@ Run the scripts from the project root.
 .venv\Scripts\python.exe src/04_eda.py
 ```
 
+### Robustness analysis
+
+```powershell
+.venv\Scripts\python.exe src/robustness_analysis.py
+```
+
 ### EDA Notebook
 
 After generating the EDA outputs, open `outputs/eda/eda_submission.ipynb`, restart the kernel if needed, and run the notebook from top to bottom.
 
 ### Analysis Notebook
 
-The econometric analysis is in `outputs/analysis/analysis.ipynb`. This notebook performs a weighted least squares regression of weekly income on education rank and year. It requires the merged dataset (`data/clean/merged_2016_2021.csv`) to be present.
+The econometric analysis is in `outputs/analysis/analysis.ipynb`. This notebook performs a weighted least squares regression of weekly income on education rank and year. It requires the merged dataset (`data/clean/merged_2016_2021.csv`) to be present. Open `outputs/analysis/analysis.ipynb` in Jupyter or VS Code and run all cells from top to bottom.
 
-To run the analysis notebook:
+### Robustness analysis
+
+Run the robustness script from the project root:
+
+```powershell
+.venv\Scripts\python.exe src\robustness_analysis.py
+```
+
+Or open `outputs/analysis/robustness_analysis.ipynb` in Jupyter or VS Code and run all cells from top to bottom.
+
+### Robustness Notebook
+
+The robustness analysis is in `outputs/analysis/robustness_analysis.ipynb`. This notebook evaluates the main descriptive finding across alternative control sets, alternative samples, an alternative functional form, and heteroskedasticity-robust inference.
+
+To run the robustness notebook:
 
 1. Ensure environment is set up and all dependencies installed (see Environment setup above)
-2. Open `outputs/analysis/analysis.ipynb` in Jupyter or VS Code
+2. Open `outputs/analysis/robustness_analysis.ipynb` in Jupyter or VS Code
 3. Select the `.venv` kernel
 4. Run all cells from top to bottom
 
 The notebook will:
 - Load the merged dataset
 - Process and harmonise income brackets
-- Filter to the analytic sample
-- Estimate a WLS regression model
-- Output regression results and interpretation
+- Run the robustness specifications on the main descriptive model
+- Save a side-by-side robustness table
+- Summarise what the checks say about the education-income association
 
 ## Reproducibility Notes
 
