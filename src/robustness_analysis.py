@@ -116,15 +116,18 @@ def estimate_wls(
     reg_df: pd.DataFrame,
     include_year: bool = True,
     robust: bool = False,
+    weighted: bool = True,
 ) -> sm.regression.linear_model.RegressionResultsWrapper:
     X = reg_df[["education_rank"]].copy()
     if include_year:
         X["year_2021"] = reg_df["year_2021"]
     X = sm.add_constant(X)
     y = reg_df["outcome"]
-    weights = reg_df["total_count"]
-
-    model = sm.WLS(y, X, weights=weights)
+    if weighted:
+        weights = reg_df["total_count"]
+        model = sm.WLS(y, X, weights=weights)
+    else:
+        model = sm.OLS(y, X)
     results = model.fit()
     if robust:
         return results.get_robustcov_results(cov_type="HC0")
@@ -149,6 +152,7 @@ def build_robustness_table(df: pd.DataFrame) -> pd.DataFrame:
             "include_year": True,
             "outcome_transform": None,
             "robust": False,
+            "weighted": True,
             "note": "WLS on weighted mean income with year control.",
         },
         {
@@ -157,6 +161,7 @@ def build_robustness_table(df: pd.DataFrame) -> pd.DataFrame:
             "include_year": False,
             "outcome_transform": None,
             "robust": False,
+            "weighted": True,
             "note": "Test the association without the year control.",
         },
         {
@@ -165,6 +170,7 @@ def build_robustness_table(df: pd.DataFrame) -> pd.DataFrame:
             "include_year": True,
             "outcome_transform": None,
             "robust": False,
+            "weighted": True,
             "note": "Exclude the top open-ended income bracket.",
         },
         {
@@ -173,7 +179,17 @@ def build_robustness_table(df: pd.DataFrame) -> pd.DataFrame:
             "include_year": True,
             "outcome_transform": np.arcsinh,
             "robust": False,
+            "weighted": True,
             "note": "Use inverse-hyperbolic-sine transformation of income.",
+        },
+        {
+            "label": "Log outcome",
+            "filter": lambda d: ~d["harmonised_income_bracket"].isin(["Negative Income", "Nil Income"]),
+            "include_year": True,
+            "outcome_transform": np.log,
+            "robust": False,
+            "weighted": True,
+            "note": "Use natural log transformation of income (excluding zero/negative).",
         },
         {
             "label": "2021 only",
@@ -181,7 +197,17 @@ def build_robustness_table(df: pd.DataFrame) -> pd.DataFrame:
             "include_year": False,
             "outcome_transform": None,
             "robust": False,
+            "weighted": True,
             "note": "Check the association inside the 2021 sample only.",
+        },
+        {
+            "label": "2016 only",
+            "filter": lambda d: d["year"] == 2016,
+            "include_year": False,
+            "outcome_transform": None,
+            "robust": False,
+            "weighted": True,
+            "note": "Check the association inside the 2016 sample only.",
         },
         {
             "label": "HC0 SE",
@@ -189,7 +215,26 @@ def build_robustness_table(df: pd.DataFrame) -> pd.DataFrame:
             "include_year": True,
             "outcome_transform": None,
             "robust": True,
+            "weighted": True,
             "note": "Same model with heteroskedasticity-robust standard errors.",
+        },
+        {
+            "label": "Unweighted OLS",
+            "filter": None,
+            "include_year": True,
+            "outcome_transform": None,
+            "robust": False,
+            "weighted": False,
+            "note": "Use OLS without weighting by sample size.",
+        },
+        {
+            "label": "Exclude negative income",
+            "filter": lambda d: d["harmonised_income_bracket"] != "Negative Income",
+            "include_year": True,
+            "outcome_transform": None,
+            "robust": False,
+            "weighted": True,
+            "note": "Exclude observations with negative income.",
         },
     ]
 
@@ -204,6 +249,7 @@ def build_robustness_table(df: pd.DataFrame) -> pd.DataFrame:
             reg_df,
             include_year=check["include_year"],
             robust=check["robust"],
+            weighted=check["weighted"],
         )
 
         N = int(reg_df["total_count"].sum())
