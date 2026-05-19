@@ -333,6 +333,18 @@ Then:
 - Open `outputs/eda/eda_submission.ipynb` and run all cells from top to bottom.
 - Or open `outputs/analysis/analysis.ipynb` for the econometric analysis and run all cells from top to bottom.
 
+## Final report and replication package
+
+The final written report is available as `docs/project_report.pdf`, generated from `docs/report.md` and the figures in `outputs/eda/figures/`.
+
+To regenerate the PDF, run:
+
+```powershell
+.venv\Scripts\python.exe scripts\generate_report_pdf.py
+```
+
+A dedicated replication guide is available in `REPLICATION.md`.
+
 ## Limitations
 
 - The analysis is restricted to Australian males because that is how the TableBuilder extract was defined.
