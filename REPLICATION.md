@@ -1,6 +1,6 @@
 # Replication Guide
 
-This repository contains the complete replication package for the analysis reported in `docs/project_report.pdf`.
+This repository contains the complete replication package for the analysis reported in `docs/project_report_v2.pdf`.
 
 ## Files and folders
 
@@ -33,7 +33,7 @@ This repository contains the complete replication package for the analysis repor
   - `robustness_table.csv`
 - `docs/`
   - `report.md`
-  - `project_report.pdf`
+  - `project_report_v2.pdf`
 - `scripts/`
   - `generate_report_pdf.py`
 
@@ -79,7 +79,7 @@ Run:
 .\.venv\Scripts\python.exe scripts\generate_report_pdf.py
 ```
 
-This generates `docs/project_report.pdf` from `docs/report.md` and the figures in `outputs/eda/figures/`.
+This generates `docs/project_report_v2.pdf` from `docs/report.md` and the figures in `outputs/eda/figures/`.
 
 ## Mapping tables and figures in the report
 

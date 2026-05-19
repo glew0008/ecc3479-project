@@ -335,13 +335,15 @@ Then:
 
 ## Final report and replication package
 
-The final written report is available as `docs/project_report.pdf`, generated from `docs/report.md` and the figures in `outputs/eda/figures/`.
+The most recent written report is available as `docs/project_report_v2.pdf`, generated from `docs/report.md` and the figures in `outputs/eda/figures/`.
 
 To regenerate the PDF, run:
 
 ```powershell
 .venv\Scripts\python.exe scripts\generate_report_pdf.py
 ```
+
+If the existing `docs/project_report.pdf` file is locked by another process, the script may create `docs/project_report_v2.pdf` instead.
 
 A dedicated replication guide is available in `REPLICATION.md`.
 
