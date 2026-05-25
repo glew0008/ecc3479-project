@@ -34,15 +34,19 @@ The 2021 extract includes two separate top-income categories. These were harmoni
 
 ### Variables and analytic dataset
 
-The cleaned merged dataset is saved to `data/clean/merged_2016_2021.csv` and documented in `data/clean/codebook.md`. Key variables include:
+The cleaned merged dataset is saved to `data/clean/merged_2016_2021.csv` and documented in `data/clean/codebook.md`. The analysis focuses on an analytic sample of 248 rows after excluding non-substantive education labels and unstated income values.
 
-- `year`: census year (2016 or 2021).
-- `education`: highest educational attainment category.
-- `income_bracket`: ABS weekly personal income bracket.
-- `count`: number of persons in the cell.
-- `education_rank`: ordinal score from 1 (lowest analytic attainment) to 8 (highest attainment).
-- `income_midpoint`: estimated weekly income midpoint for the bracket.
-- `weighted_income`: midpoint times cell count.
+Key variables and their roles in the analysis:
+
+- `year` (integer): Census year, either `2016` or `2021`. This is the main time indicator used to separate the two Census waves.
+- `education` (categorical): highest educational attainment category. Only eight substantive groups are used for the main analysis; administrative categories such as `Total`, `Not stated`, `Not applicable`, and `Supplementary Codes` are excluded.
+- `income_bracket` (categorical): ABS weekly personal income bracket. The raw brackets come from Census TableBuilder.
+- `count` (integer): number of Australian males in each `year × income_bracket × education` cell. These are the population weights used in all weighted summaries and regressions.
+- `education_rank` (integer): ordinal score from 1 to 8 assigned to the analytic education groups. It is the main independent variable in the regression specification.
+- `income_midpoint` (numeric): estimated weekly income midpoint for each income bracket.
+- `weighted_income` (numeric): the product of `income_midpoint` and `count`, used to compute weighted mean income.
+
+The dependent variable in the main regression is the weighted mean weekly income for each education-year cell. The main independent variable is the education rank, which preserves the natural ordering of attainment categories without imposing a precise cardinal distance between them.
 
 ### Summary statistics
 
@@ -61,32 +65,38 @@ The education groups show a strong rank-order relationship with income. In both 
 
 ## Empirical strategy
 
-### Specification
+### Model and variables
 
-The main empirical model is a weighted linear specification estimated on education-year cells:
+The main empirical model is a weighted linear regression estimated on education-year cells:
 
 `MeanIncome_{ey} = alpha + beta * EducationRank_e + gamma * Year2021_y + epsilon_{ey}`
 
 where:
 
 - `MeanIncome_{ey}` is the weighted mean weekly income for education group `e` in year `y`.
-- `EducationRank_e` is an ordinal rank from 1 to 8.
-- `Year2021_y` is an indicator equal to 1 for 2021 and 0 for 2016.
-- weights are the population counts for each cell.
+- `EducationRank_e` is an ordinal rank from 1 to 8 assigned to the eight substantive education groups.
+- `Year2021_y` is a year indicator equal to 1 for 2021 and 0 for 2016.
+- weights are the population counts (`count`) for each education-income cell.
 
-The key coefficient, `beta`, measures the average increase in weighted mean income associated with one additional step in the education hierarchy.
+The dependent variable is constructed from group-level income brackets; the analysis approximates each bracket by its midpoint and computes a weighted mean income for each education-year cell. The main independent variable is the education rank, which contains the ordered information from low to high attainment. The year indicator captures the overall shift in incomes between Census waves.
 
-### Descriptive ambition
+### Identification and assumptions
 
-This analysis is deliberately descriptive rather than causal. The census extract is grouped at the education-income-cell level and lacks individual-level controls for age, hours worked, occupation, industry, or region. Therefore, the results describe the education-income gradient in the population aggregates, but they do not identify the causal return to education.
+This analysis is descriptive rather than causal. A causal interpretation would require the assumption that, after controlling for year, education rank is independent of all other factors that affect income. That assumption is not credible here because the grouped Census data do not control for important individual-level confounders such as age, labour-force status, occupation, hours worked, industry, or geographic location.
 
-A causal interpretation would require an assumption that, after controlling for year, education rank is exogenous to income. That assumption is unrealistic in this dataset because education groups differ systematically in many unobserved dimensions.
+The core identifying assumption for the headline association is therefore very weak. The result should be read as a population-level association between higher education categories and higher average incomes in the Census aggregates, not as a causal return to education.
 
-### Weighting and measurement
+### Measurement choices
 
-Weighting by cell count is essential because each row represents a differing number of persons. Without weights, rare education-income cells would be treated equally to large cells, distorting the population-level relationship.
+- `education_rank` is ordinal and reflects the ordered level of education categories; it should not be interpreted as a precise number of years or quality units.
+- Income brackets are converted to weekly midpoints. The top open-ended income bracket is harmonised across years to allow direct comparison.
+- A subset of tables excludes `Not Stated` income rows so the mean income calculations reflect actual reported income brackets.
 
-Income is measured in brackets, so the analysis uses bracket midpoints as an approximation. This is a common approach for grouped income data, but it introduces measurement error, especially for the top open-ended bracket.
+### Weighting and sample
+
+Weighting by cell count is essential because each row represents a different number of people. Without weights, small education-income cells would count the same as very large ones, which would distort the population-level relationship.
+
+The analytic sample excludes rows with administrative education labels and unstated income, leaving 248 substantive cells that represent about 16.8 million Australian males.
 
 ## Results
 
@@ -99,23 +109,31 @@ The main weighted regression estimate is:
 - p-value: **< 0.001**.
 - `Year2021` coefficient: **$120.75** additional weekly income.
 
+The sample for this regression represents about **16.8 million observations** in population counts and uses the eight substantive education groups with reported income.
+
 In plain language:
 
-- A one-step increase in education rank is associated with about **$196 more per week** in the mean income of that education group.
-- The gap between the lowest and highest analytic education categories is roughly **7 × $196 = $1,372 per week**, equivalent to about **$71,344 per year**.
-- The education gradient remains large even after controlling for the overall increase in income from 2016 to 2021.
+- A one-step increase in education rank is associated with about **$196 more per week** in the group’s mean weekly income.
+- The difference between the lowest and highest analytic education categories is roughly **seven rank steps × $196 = $1,372 per week**, which is equivalent to about **$71,300 per year**.
+- Controlling for Census year, the 2021 mean income is estimated to be about **$121 per week higher** than 2016.
+
+The model does not include additional individual-level controls because the aggregated Census data do not provide age, occupation, hours or regional detail at the same education-income cell level.
 
 ### Education group patterns
 
 The education-income gradient is strong in the descriptive data:
 
 - In 2021, **Postgraduate Degree Level** has the highest estimated mean weekly income at **$1,892.87**.
-- In 2021, **Graduate Diploma and Graduate Certificate Level** has the second-highest mean income at **$1,843.93**.
-- In 2021, **Bachelor Degree Level** has a mean of **$1,704.55**.
-- In 2021, **Secondary Education - Years 9 and below** has the lowest mean income at **$506.76**.
-- The low-attainment group in 2021 has **36.41%** of its weighted population in low-income brackets, while the highest-attainment group has **44.31%** in the top two income brackets.
+- In 2021, **Graduate Diploma and Graduate Certificate Level** has the second-highest mean weekly income at **$1,843.93**.
+- In 2021, **Bachelor Degree Level** has a mean weekly income of **$1,704.55**.
+- In 2021, **Secondary Education - Years 9 and below** has the lowest mean weekly income at **$506.76**.
+- The lowest attainment group in 2021 has **36.41%** of its weighted population in low-income brackets, while the highest attainment group has **44.31%** in the top two income brackets.
 
 These patterns show that education is associated not only with higher average income, but also with a systematically different position in the income distribution.
+
+### Interpretation
+
+The coefficient should be interpreted as a descriptive gradient rather than a causal return. It summarizes how the mean weekly income of education-year cells changes as the education category increases by one rank step, given the estimation sample and the bracket-to-midpoint income approximation.
 
 ### Visualization
 
@@ -129,23 +147,24 @@ The distributional charts produced in the EDA reinforce the primary finding. Hig
 
 ## Robustness
 
-The headline association survives multiple alternative checks.
+The headline association is robust across a battery of specification checks. These results are summarised in `outputs/analysis/robustness_table.csv`.
 
 ### Specification checks
 
-- `No controls`: omitting the year indicator still produces a large, significant coefficient.
-- `Drop top bracket`: excluding the open-ended `$3,000 Or More` category lowers the coefficient to **$145.74**, indicating the top bracket has a meaningful influence.
-- `IHS outcome`: using inverse hyperbolic sine of income preserves the positive association.
-- `Log outcome`: using log income (excluding zero and negative values) also preserves the association.
+- `Main`: weighted least squares with the year control yields a coefficient of **$195.88** for `education_rank`.
+- `No controls`: dropping the year indicator produces a similar coefficient of **$197.17**, showing the gradient is not driven solely by the year shift.
+- `Drop top bracket`: excluding the top open-ended income bracket lowers the coefficient to **$145.74**, which shows the highest incomes do have an important influence on the group means.
+- `IHS outcome`: using inverse hyperbolic sine of income preserves the positive association in a log-like transformation.
+- `Log outcome`: applying a natural log to positive incomes also maintains the association, although it removes zero and negative values from the sample.
+- `2021 only`: the 2021 sample alone produces a coefficient of **$202.64**.
+- `2016 only`: the 2016 sample alone produces a coefficient of **$187.77**.
 - `HC0 SE`: heteroskedasticity-robust standard errors leave the point estimate unchanged at **$195.88**, with a robust standard error of **$8.72**.
-- `Unweighted OLS`: the unweighted model yields **$205.16**, suggesting the weighted result is not solely due to weighting.
-- `2016 only`: the 2016 sample yields **$187.77**.
-- `2021 only`: the 2021 sample yields **$202.64**.
-- `Exclude negative income`: dropping negative-income observations does not materially change the main association.
+- `Unweighted OLS`: an unweighted regression yields **$205.16**, showing that the weighted finding is not an artifact of the chosen sample weights.
+- `Exclude negative income`: dropping negative-income observations changes the coefficient only slightly to **$195.25**.
 
-### Interpretation
+### What this robustness tells us
 
-The consistency of the estimate across these checks strengthens the descriptive conclusion. The largest change occurs when the top open-ended bracket is excluded, which is reasonable because that category contains the highest incomes and therefore has an outsized effect on group means.
+The main descriptive association is stable across sensible alternative model choices and sample definitions. The largest sensitivity comes from excluding the open-ended top-income bracket, which is expected because high incomes are concentrated in the top education groups and can disproportionately affect group means.
 
 ### Visualization
 
@@ -157,24 +176,32 @@ Figure 2 shows that higher education groups hold larger shares of top-income bra
 
 ### What the data support
 
-- There is a strong descriptive association between higher educational attainment and higher weekly income in the census aggregates.
-- The gradient is visible in both 2016 and 2021 and remains after controlling for year.
-- Higher education groups are consistently over-represented in the upper income brackets.
+- There is a strong descriptive association between higher educational attainment and higher weekly income for Australian males in the Census aggregates.
+- The gradient exists in both 2016 and 2021 and remains when controlling for the overall year-to-year income shift.
+- Higher education groups are consistently more represented in upper income brackets, while lower education groups are concentrated in lower brackets.
 
-### What we cannot conclude
+### What this analysis cannot establish
 
-- The results do not establish a causal return to education.
-- The grouped nature of the data prevents controlling for important individual-level variables such as age, hours worked, occupation, industry, and region.
-- The income measure is an approximation from bracket midpoints, especially imprecise for the top open-ended bracket.
-- Education rank is ordinal but not cardinal, so the coefficient should not be interpreted as a constant dollar return per qualification.
+- It cannot establish a causal return to education. The data are grouped and do not support individual-level identification.
+- The analysis cannot adjust for age, occupation, hours worked, industry, region, or labour force status within the same education-income cells.
+- Income is measured in brackets, so the numeric outcome is an approximation from bracket midpoints rather than a precise individual income value.
+- The education rank is ordinal, not cardinal. A one-step change in rank means moving to the next education category, not gaining a fixed number of schooling years.
 
-### Key interpretive threat
+### The most important remaining threat
 
-The most important threat is omitted-variable bias in the aggregates. Different education groups likely differ systematically in age structure, labour force participation, occupation, and location, which can generate an income gap even if the direct causal effect of education is smaller.
+The largest interpretive threat is omitted-variable bias from compositional differences across education groups. For example:
 
-### Further data and design
+- higher education groups tend to be older and more likely to work full-time,
+- they may be concentrated in higher-paying industries and occupations,
+- and they are likely to differ in geographic location and labour market attachment.
 
-A more credible analysis would use individual-level microdata with controls for age, occupation, industry, hours worked, and geography. Even stronger would be a quasi-experimental design using exogenous variation in education attainment, such as policy changes or schooling reforms. Longitudinal data that follow individuals over time would also help separate trends in cohort composition from true returns to education.
+These omitted differences can explain part of the income gap even if education itself is not the only causal driver.
+
+### How to improve the design
+
+The most credible next step is to use individual-level microdata with controls for age, occupation, industry, hours worked, region, and labour-force status. Better yet, a quasi-experimental design using exogenous variation in education attainment — such as a schooling reform or instrumented changes in qualifications — would be required for causal inference.
+
+Longitudinal or panel data would also help distinguish whether the observed 2016–2021 differences reflect changing cohort composition or true shifts in the returns to education.
 
 ## References
 
