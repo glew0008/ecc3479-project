@@ -44,7 +44,47 @@ if img_path.exists():
 else:
     print(f'Warning: image {img_path} not found')
 
+slide = prs.slides.add_slide(prs.slide_layouts[5])
+slide.shapes.title.text = 'Additional evidence'
+img1_path = Path('outputs/eda/figures/top_income_share_by_education.png')
+img2_path = Path('outputs/eda/figures/weighted_income_boxplot_by_year.png')
+if img1_path.exists():
+    slide.shapes.add_picture(str(img1_path), Inches(0.3), Inches(1.2), width=Inches(4.4))
+else:
+    print(f'Warning: image {img1_path} not found')
+if img2_path.exists():
+    slide.shapes.add_picture(str(img2_path), Inches(5.0), Inches(1.2), width=Inches(4.4))
+else:
+    print(f'Warning: image {img2_path} not found')
+
+slide = prs.slides.add_slide(prs.slide_layouts[5])
+slide.shapes.title.text = 'Robustness summary'
+table_data = [
+    ['Specification', 'β (education rank)', 'SE', 'Note'],
+    ['Main', '$195.88', '$7.38', 'WLS with year control'],
+    ['Drop top bracket', '$145.74', '$9.01', 'Exclude open-ended top bracket'],
+    ['2021 only', '$202.64', '$12.11', '2021 sample only'],
+    ['2016 only', '$187.77', '$7.97', '2016 sample only'],
+    ['Unweighted OLS', '$205.16', '$13.11', 'No weighting'],
+]
+rows = len(table_data)
+cols = len(table_data[0])
+left = Inches(0.5)
+top = Inches(1.2)
+width = Inches(9)
+height = Inches(3.5)
+table = slide.shapes.add_table(rows, cols, left, top, width, height).table
+for col_idx, heading in enumerate(table_data[0]):
+    table.cell(0, col_idx).text = heading
+    table.cell(0, col_idx).text_frame.paragraphs[0].font.bold = True
+    table.cell(0, col_idx).text_frame.paragraphs[0].font.size = Pt(14)
+for row_idx, row_data in enumerate(table_data[1:], start=1):
+    for col_idx, cell_text in enumerate(row_data):
+        table.cell(row_idx, col_idx).text = cell_text
+        table.cell(row_idx, col_idx).text_frame.paragraphs[0].font.size = Pt(12)
+
 slides_dir = Path('slides')
 slides_dir.mkdir(parents=True, exist_ok=True)
-prs.save(slides_dir / 'Education_and_Income_Presentation.pptx')
-print('Created slides/Education_and_Income_Presentation.pptx')
+output_path = slides_dir / 'Education_and_Income_Presentation_updated.pptx'
+prs.save(output_path)
+print(f'Created {output_path}')
